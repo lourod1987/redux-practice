@@ -1,5 +1,5 @@
 import C from './constants';
-import { goal } from './store/reducers'
+import { skiDay } from './store/reducers'
 // import { allSkiDays, goal } from './initialState.json';
 
 // console.log(`
@@ -13,17 +13,27 @@ import { goal } from './store/reducers'
 //     ${Object.keys(C).join('\n     ')}
 // `);
 
-const state = 10;
+const state = null;
+
+// const action = {
+//     type: C.SET_GOAL,
+//     payload: 15
+// }
 
 const action = {
-    type: C.SET_GOAL,
-    payload: 15
+    type: C.ADD_DAY,
+    payload: {
+        "resort": "Heavenly",
+        "date": "2016-12-16",
+        "powder": true,
+        "backcountry": false
+    }
 }
 
-const nextState = goal(state, action);
+const nextState = skiDay(state, action);
 
 console.log(`
-    initial goal: ${state}
+    initial state: ${state}
     action: ${JSON.stringify(action)}
-    new goal: ${nextState}
+    new state: ${JSON.stringify(nextState)}
 `)
