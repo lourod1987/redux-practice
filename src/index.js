@@ -1,5 +1,5 @@
 import C from './constants';
-import { skiDay } from './store/reducers'
+import { errors } from './store/reducers'
 // import { allSkiDays, goal } from './initialState.json';
 
 // console.log(`
@@ -13,7 +13,10 @@ import { skiDay } from './store/reducers'
 //     ${Object.keys(C).join('\n     ')}
 // `);
 
-const state = null;
+const state = [
+    "user not authorized",
+    "server feed not found"
+];
 
 // const action = {
 //     type: C.SET_GOAL,
@@ -21,16 +24,11 @@ const state = null;
 // }
 
 const action = {
-    type: C.ADD_DAY,
-    payload: {
-        "resort": "Heavenly",
-        "date": "2016-12-16",
-        "powder": true,
-        "backcountry": false
-    }
+    type: C.CLEAR_ERROR,
+    payload: 0
 }
 
-const nextState = skiDay(state, action);
+const nextState = errors(state, action);
 
 console.log(`
     initial state: ${state}
