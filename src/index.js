@@ -1,6 +1,8 @@
+/* eslint-disable quotes */
 import C from './constants';
-import { errors } from './store/reducers'
+import { errors } from './store/reducers';
 // import { allSkiDays, goal } from './initialState.json';
+import { allSkiDays } from './store/reducers';
 
 // console.log(`
 //     Ski Day Counter
@@ -14,8 +16,12 @@ import { errors } from './store/reducers'
 // `);
 
 const state = [
-    "user not authorized",
-    "server feed not found"
+  {
+    "resort": "Kirkwood",
+    "date": "2016-12-15",
+    "powder": true,
+    "backcountry": false
+  }
 ];
 
 // const action = {
@@ -23,15 +29,25 @@ const state = [
 //     payload: 15
 // }
 
-const action = {
-    type: C.CLEAR_ERROR,
-    payload: 0
-}
+// const action = {
+//   type: C.CLEAR_ERROR,
+//   payload: 0
+// };
 
-const nextState = errors(state, action);
+const action = {
+  type: C.ADD_DAY,
+  payload: {
+    "resort": "Boreal",
+    "date": "2016-12-15",
+    "powder": false,
+    "backcountry": false
+  }
+};
+
+const nextState = allSkiDays(state, action);
 
 console.log(`
-    initial state: ${state}
-    action: ${JSON.stringify(action)}
-    new state: ${JSON.stringify(nextState)}
-`)
+  initial state: ${JSON.stringify(state)}
+  action: ${JSON.stringify(action)}
+  new state: ${JSON.stringify(nextState)}
+`);
