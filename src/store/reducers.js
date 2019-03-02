@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable indent */
 import C from '../constants';
 
@@ -18,8 +19,10 @@ export const errors = (state=[], action) => {
       ...state,
       action.payload
     ];
+    
   case C.CLEAR_ERROR:
     return state.filter((message, i) => i !== action.payload);
+
   default:
     return state;
   }
@@ -28,11 +31,18 @@ export const errors = (state=[], action) => {
 export const allSkiDays = (state=[], action) => {
   switch(action.type) {
     case C.ADD_DAY:
-      return [
-        ...state,
-        skiDay(null, action)
-      ];
+      const hasDayAlready = state.some(skiDay => skiDay.date === action.payload.date);
+      return (hasDayAlready) ?
+        state :
+        [
+          ...state,
+          skiDay(null, action)
+        ];
+    
+    case C.REMOVE_DAY:
+      return state.filter(skiDay => skiDay.date !== action.payload);
+
     default:
-      state;
+      return state;
   }
 };
