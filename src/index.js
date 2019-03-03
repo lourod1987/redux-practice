@@ -1,8 +1,7 @@
 /* eslint-disable quotes */
 import C from './constants';
-import { errors } from './store/reducers';
+import { fetching } from './store/reducers';
 // import { allSkiDays, goal } from './initialState.json';
-import { allSkiDays } from './store/reducers';
 
 // console.log(`
 //     Ski Day Counter
@@ -15,20 +14,11 @@ import { allSkiDays } from './store/reducers';
 //     ${Object.keys(C).join('\n     ')}
 // `);
 
-const state = [
-  {
-    "resort": "Kirkwood",
-    "date": "2016-12-15",
-    "powder": true,
-    "backcountry": false
-  },
-  {
-    "resort": "Boreal",
-    "date": "2016-12-16",
-    "powder": false,
-    "backcountry": false
-  }
-];
+const state = false;
+const expectedState = true;
+const actualState = fetching(state, action);
+
+expectedState(actualState).toEqual(expectedState);
 
 // const action = {
 //     type: C.SET_GOAL,
@@ -41,14 +31,17 @@ const state = [
 // };
 
 const action = {
-  type: C.REMOVE_DAY,
-  payload: "2016-12-15"
+  type: C.FETCH_RESORT_NAMES
 };
 
 const nextState = allSkiDays(state, action);
 
 console.log(`
-  initial state: ${JSON.stringify(state)}
-  action: ${JSON.stringify(action)}
-  new state: ${JSON.stringify(nextState)}
+  Challenge A: FETCH_RESORT_NAMES PASSED!!!
 `);
+
+// console.log(`
+//   initial state: ${JSON.stringify(state)}
+//   action: ${JSON.stringify(action)}
+//   new state: ${JSON.stringify(nextState)}
+// `);
