@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 /* eslint-disable quotes */
 import C from './constants';
+import expect from 'expect';
 import { fetching } from './store/reducers';
 // import { allSkiDays, goal } from './initialState.json';
 
@@ -14,12 +16,6 @@ import { fetching } from './store/reducers';
 //     ${Object.keys(C).join('\n     ')}
 // `);
 
-const state = false;
-const expectedState = true;
-const actualState = fetching(state, action);
-
-expectedState(actualState).toEqual(expectedState);
-
 // const action = {
 //     type: C.SET_GOAL,
 //     payload: 15
@@ -30,18 +26,26 @@ expectedState(actualState).toEqual(expectedState);
 //   payload: 0
 // };
 
-const action = {
-  type: C.FETCH_RESORT_NAMES
-};
 
-const nextState = allSkiDays(state, action);
 
-console.log(`
-  Challenge A: FETCH_RESORT_NAMES PASSED!!!
-`);
+// const nextState = allSkiDays(state, action);
 
 // console.log(`
 //   initial state: ${JSON.stringify(state)}
 //   action: ${JSON.stringify(action)}
 //   new state: ${JSON.stringify(nextState)}
 // `);
+
+const action = {
+  type: C.FETCH_RESORT_NAMES
+};
+
+const state = false;
+const expectedState = true;
+const actualState = fetching(state, action);
+
+expect(actualState).toEqual(expectedState);
+
+console.log(`
+  Challenge A: FETCH_RESORT_NAMES PASSED!!!
+`);
