@@ -2,7 +2,7 @@
 /* eslint-disable quotes */
 import C from './constants';
 import expect from 'expect';
-import { suggestions } from './store/reducers';
+import { suggestions, fetching } from './store/reducers';
 // import { allSkiDays, goal } from './initialState.json';
 
 // console.log(`
@@ -50,17 +50,44 @@ import { suggestions } from './store/reducers';
 //   Challenge B: CANCEL_FETCHING PASSED!!!
 // `);
 
+// const action = {
+//   type: C.CLEAR_SUGGESTIONS
+// };
+
+// const state = ['Heavenly Ski Resort', 'Heavens Sonohara'];
+// const expectedState = [];
+
+// const actualState = suggestions(state, action);
+
+// expect(actualState).toEqual(expectedState);
+
+// console.log(`
+// //   Challenge C: CLEAR_SUGGESTIONS PASSED!!!
+// // `);
+
 const action = {
-  type: C.CLEAR_SUGGESTIONS
+  type: C.CHANGE_SUGGESTIONS,
+  payload: ['Heavenly Ski Resort', 'Heavens Sonohara']
 };
 
-const state = ['Heavenly Ski Resort', 'Heavens Sonohara'];
-const expectedState = [];
+const state = {
+  fetching: true,
+  suggestions: []
+};
 
-const actualState = suggestions(state, action);
+const expectedState = {
+  fetching: false,
+  suggestions: ['Heavenly Ski Resort', 'Heavens Sonohara']
+};
 
-expect(actualState).toEqual(expectedState);
+const actualState = {
+  fetching: fetching(state.fetching, action),
+  suggestions: suggestions(state.suggestions, action)
+};
+
+expect(actualState.suggestions).toEqual(expectedState.suggestions);
+expect(actualState.fetching).toEqual(expectedState.fetching);
 
 console.log(`
-//   Challenge C: CLEAR_SUGGESTIONS PASSED!!!
-// `);
+  Challenge D: CHANGE_SUGGESTIONS PASSED!!!
+`);
