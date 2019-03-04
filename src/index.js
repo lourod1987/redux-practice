@@ -37,15 +37,15 @@ import { fetching } from './store/reducers';
 // `);
 
 const action = {
-  type: C.FETCH_RESORT_NAMES
+  type: C.CANCEL_FETCHING
 };
 
-const state = false;
-const expectedState = true;
+const state = true;
+const expectedState = false;
 const actualState = fetching(state, action);
 
 expect(actualState).toEqual(expectedState);
 
 console.log(`
-  Challenge A: FETCH_RESORT_NAMES PASSED!!!
+  Challenge B: CANCEL_FETCHING PASSED!!!
 `);
