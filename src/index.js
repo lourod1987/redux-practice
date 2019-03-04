@@ -1,9 +1,53 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 import C from './constants';
+import appReducer from './store/reducers';
+import initialState from './initialState.json';
 import expect from 'expect';
-import { suggestions, fetching } from './store/reducers';
 // import { allSkiDays, goal } from './initialState.json';
+
+
+let state = initialState;
+
+console.log(`
+  Initial state
+  =============
+  goal: ${state.goal}
+  resorts: ${JSON.stringify(state.allSkiDays)}
+  fetching: ${state.resortNames.fetching}
+  suggestions: ${state.resortNames.suggestions}
+`);
+
+
+state = appReducer(state, {
+  type: C.SET_GOAL,
+  payload: 2
+});
+
+state = appReducer(state, {
+  type: C.ADD_DAY,
+  payload: {
+    "resort": "Mt Shasta",
+    "date": "2016-10-28",
+    "powder": false,
+    "backcountry": true
+  }
+});
+
+state = appReducer(state, {
+  type: C.CHANGE_SUGGESTIONS,
+  payload: ["Mt Tallac", "Mt Hood", "Mt Shasta"]
+});
+
+
+console.log(`
+  Next state
+  =============
+  goal: ${state.goal}
+  resorts: ${JSON.stringify(state.allSkiDays)}
+  fetching: ${state.resortNames.fetching}
+  suggestions: ${state.resortNames.suggestions}
+`);
 
 // console.log(`
 //     Ski Day Counter
@@ -65,29 +109,29 @@ import { suggestions, fetching } from './store/reducers';
 // //   Challenge C: CLEAR_SUGGESTIONS PASSED!!!
 // // `);
 
-const action = {
-  type: C.CHANGE_SUGGESTIONS,
-  payload: ['Heavenly Ski Resort', 'Heavens Sonohara']
-};
+// const action = {
+//   type: C.CHANGE_SUGGESTIONS,
+//   payload: ['Heavenly Ski Resort', 'Heavens Sonohara']
+// };
 
-const state = {
-  fetching: true,
-  suggestions: []
-};
+// const state = {
+//   fetching: true,
+//   suggestions: []
+// };
 
-const expectedState = {
-  fetching: false,
-  suggestions: ['Heavenly Ski Resort', 'Heavens Sonohara']
-};
+// const expectedState = {
+//   fetching: false,
+//   suggestions: ['Heavenly Ski Resort', 'Heavens Sonohara']
+// };
 
-const actualState = {
-  fetching: fetching(state.fetching, action),
-  suggestions: suggestions(state.suggestions, action)
-};
+// const actualState = {
+//   fetching: fetching(state.fetching, action),
+//   suggestions: suggestions(state.suggestions, action)
+// };
 
-expect(actualState.suggestions).toEqual(expectedState.suggestions);
-expect(actualState.fetching).toEqual(expectedState.fetching);
+// expect(actualState.suggestions).toEqual(expectedState.suggestions);
+// expect(actualState.fetching).toEqual(expectedState.fetching);
 
-console.log(`
-  Challenge D: CHANGE_SUGGESTIONS PASSED!!!
-`);
+// console.log(`
+//   Challenge D: CHANGE_SUGGESTIONS PASSED!!!
+// `);
