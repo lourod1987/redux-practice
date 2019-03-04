@@ -2,7 +2,7 @@
 /* eslint-disable quotes */
 import C from './constants';
 import expect from 'expect';
-import { fetching } from './store/reducers';
+import { suggestions } from './store/reducers';
 // import { allSkiDays, goal } from './initialState.json';
 
 // console.log(`
@@ -36,16 +36,31 @@ import { fetching } from './store/reducers';
 //   new state: ${JSON.stringify(nextState)}
 // `);
 
+// const action = {
+//   type: C.CANCEL_FETCHING
+// };
+
+// const state = true;
+// const expectedState = false;
+// const actualState = fetching(state, action);
+
+// expect(actualState).toEqual(expectedState);
+
+// console.log(`
+//   Challenge B: CANCEL_FETCHING PASSED!!!
+// `);
+
 const action = {
-  type: C.CANCEL_FETCHING
+  type: C.CLEAR_SUGGESTIONS
 };
 
-const state = true;
-const expectedState = false;
-const actualState = fetching(state, action);
+const state = ['Heavenly Ski Resort', 'Heavens Sonohara'];
+const expectedState = [];
+
+const actualState = suggestions(state, action);
 
 expect(actualState).toEqual(expectedState);
 
 console.log(`
-  Challenge B: CANCEL_FETCHING PASSED!!!
-`);
+//   Challenge C: CLEAR_SUGGESTIONS PASSED!!!
+// `);
