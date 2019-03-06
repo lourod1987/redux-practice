@@ -3,7 +3,7 @@
 import C from './constants';
 import appReducer from './store/reducers';
 import initialState from './initialState.json';
-import expect from 'expect';
+// import expect from 'expect';
 // import { allSkiDays, goal } from './initialState.json';
 
 
