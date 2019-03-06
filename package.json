@@ -2,9 +2,9 @@
   "name": "redux-practice",
   "version": "1.0.0",
   "description": "",
-  "main": "constants.js",
+  "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node ./src/index.js"
+    "start": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -16,16 +16,16 @@
     "url": "https://github.com/lourod1987/redux-practice/issues"
   },
   "homepage": "https://github.com/lourod1987/redux-practice#readme",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "expect": "^1.20.2",
-    "jest": "^24.1.0",
-    "webpack": "^4.29.6",
-    "webpack-dev-server": "^3.2.1"
-  },
   "dependencies": {
-    "redux": "^4.0.1"
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.6",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
   }
 }
