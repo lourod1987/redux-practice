@@ -2,7 +2,8 @@
 /* eslint-disable quotes */
 import C from './constants';
 import storeFactory from './store';
-import { addDay, removeDay, setGoal } from './actions';
+import { addDay, removeDay, setGoal,
+  addError, clearError, changeSuggestions, clearSuggestions, randomGoals } from './actions';
 // import appReducer from './store/reducers';
 // import initialState from './initialState.json';
 // import { createStore } from 'redux';
@@ -20,6 +21,26 @@ store.dispatch(
 
 store.dispatch(
   setGoal(55)
+);
+
+store.dispatch(
+  addError("something went wrong")
+);
+
+store.dispatch(
+  clearError(0)
+);
+
+store.dispatch(
+  changeSuggestions(['One', 'Two', 'Three'])
+);
+
+store.dispatch(
+  clearSuggestions()
+);
+
+store.dispatch(
+  randomGoals()
 );
 
 // const initialState = (localStorage['redux-store']) ?
