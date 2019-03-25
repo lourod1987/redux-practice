@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import C from '../constants';
-import appReducer from './reducers';
+import appReducer, { suggestions } from './reducers';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 
@@ -18,6 +18,7 @@ const consoleMessages = store => next => action => {
     ski days: ${allSkiDays.length}
     goal: ${goal}
     fetching: ${resortNames.fetching}
+    suggestions: ${resortNames.suggestions}
     errors: ${errors.length}
   `);
 
