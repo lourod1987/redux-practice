@@ -3,7 +3,8 @@
 import C from './constants';
 import storeFactory from './store';
 import { addDay, removeDay, setGoal,
-  addError, clearError, changeSuggestions, clearSuggestions, randomGoals } from './actions';
+  addError, clearError, changeSuggestions, clearSuggestions, randomGoals, suggestResortNames
+} from './actions';
 // import appReducer from './store/reducers';
 // import initialState from './initialState.json';
 // import { createStore } from 'redux';
@@ -12,36 +13,40 @@ import { addDay, removeDay, setGoal,
 const store = storeFactory();
 
 store.dispatch(
-  addDay("Heavenly", "2016-12-22")
+  suggestResortNames("hea")
 );
 
-store.dispatch(
-  removeDay("2016-12-22")
-);
+// store.dispatch(
+//   addDay("Heavenly", "2016-12-22")
+// );
 
-store.dispatch(
-  setGoal(55)
-);
+// store.dispatch(
+//   removeDay("2016-12-22")
+// );
 
-store.dispatch(
-  addError("something went wrong")
-);
+// store.dispatch(
+//   setGoal(55)
+// );
 
-store.dispatch(
-  clearError(0)
-);
+// store.dispatch(
+//   addError("something went wrong")
+// );
 
-store.dispatch(
-  changeSuggestions(['One', 'Two', 'Three'])
-);
+// store.dispatch(
+//   clearError(0)
+// );
 
-store.dispatch(
-  clearSuggestions()
-);
+// store.dispatch(
+//   changeSuggestions(['One', 'Two', 'Three'])
+// );
 
-store.dispatch(
-  randomGoals()
-);
+// store.dispatch(
+//   clearSuggestions()
+// );
+
+// store.dispatch(
+//   randomGoals()
+// );
 
 // const initialState = (localStorage['redux-store']) ?
 //   JSON.parse(localStorage['redux-store']) :
