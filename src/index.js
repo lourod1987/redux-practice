@@ -1,20 +1,38 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 import C from './constants';
-import storeFactory from './store';
-import { addDay, removeDay, setGoal,
-  addError, clearError, changeSuggestions, clearSuggestions, randomGoals, suggestResortNames
-} from './actions';
+import React from 'react';
+import { render } from 'react-dom';
+import routes from './routes';
+import sampleData from './initialState';
+// import storeFactory from './store';
+// import { addDay, removeDay, setGoal,
+//   addError, clearError, changeSuggestions, clearSuggestions, randomGoals, suggestResortNames
+// } from './actions';
 // import appReducer from './store/reducers';
 // import initialState from './initialState.json';
 // import { createStore } from 'redux';
 
 
-const store = storeFactory();
+const initialState = (localStorage["redux-store"]) ?
+  JSON.parse(localStorage["redux-store"]) :
+  sampleData;
 
-store.dispatch(
-  suggestResortNames("hea")
+const saveState = () => 
+  localStorage["redux-store"] = JSON.stringify(store.getState());
+
+window.React = React;
+
+render(
+  routes,
+  document.getElementById('react-container')
 );
+
+// const store = storeFactory();
+
+// store.dispatch(
+//   suggestResortNames("hea")
+// );
 
 // store.dispatch(
 //   addDay("Heavenly", "2016-12-22")
