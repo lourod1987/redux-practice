@@ -86,6 +86,7 @@ export const suggestions = (state=[], action) => {
 
 // export default singleReducer;
 
+//combined reducers must reflect the shape of the data
 export default combineReducers({
   allSkiDays,
   goal,
